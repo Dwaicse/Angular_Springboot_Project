@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationServiceService } from '../authentication-service.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +9,31 @@ import { AuthenticationServiceService } from '../authentication-service.service'
 })
 export class LoginComponent implements OnInit {
   
-  username:any;
-  password:any;
+  user:any
+  errorMessage="Invalid Credentials"
+  username=""
+  password=""
   invalidLogin:boolean=false;
-  errorMessage="Invalid Login"
+  message=""
   constructor(private authService:AuthenticationServiceService) { }
 
   ngOnInit(): void {
   }
 
   logIn(){
-    if(!this.authService.verifyUser(this.username,this.password)){
-      this.invalidLogin=true;
-      // this.message="login success!!"
-    }
-        
+    this.authService.verifyUser().subscribe(data=>{
+      this.user=data;
+    })
+      if(!(this.user.username===this.username && this.user.password===this.password))  {
+        this.invalidLogin=true;
+        this.message=""
+
+      }
+      else{
+        this.message="successful login!!!"
+        this.invalidLogin=false
+        //from here the page should be redirected to dashboard location
+      }
     
   }
 
