@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationServiceService } from '../authentication-service.service';
-import { User } from '../user';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   password=""
   invalidLogin:boolean=false;
   message=""
-  constructor(private authService:AuthenticationServiceService) { }
+  constructor(private authService:AuthenticationServiceService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,8 @@ export class LoginComponent implements OnInit {
         this.message="successful login!!!"
         this.invalidLogin=false
         //from here the page should be redirected to dashboard location
+        this.router.navigate(['dashboard'])
+
       }
     
   }
