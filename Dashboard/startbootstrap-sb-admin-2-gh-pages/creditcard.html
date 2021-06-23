@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  position: relative;
+  width:1000px;
+  height:800px;
+  margin: 0 auto; 
+}
+
+#card {
+  position: absolute;
+  width: 450px;
+  height: 250px;
+  border-radius: 15px;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #7d7e7d; /* Old browsers */
+  background: -moz-linear-gradient(top, #7d7e7d 0%, #0e0e0e 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #7d7e7d 0%,#0e0e0e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+  box-shadow: 0px 28px 28px -12px rgba(0,0,0,0.5);
+}
+
+
+#bank-title {
+  position: relative;
+  width: 170px;
+  color: white;
+  font-size: 1.8em;
+  font-family: Arial;
+  font-weight: 400;
+  top: 11%;
+  left: 8%;
+}
+
+#bolder {
+  font-weight: 800;
+}
+
+#chip {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  //outline: 1px solid green;
+  top: 15%;
+  left: 8%;
+  content:url(https://www.thebeneficial.com/portals/beneficialbankwebsite/images/chip.png);
+}
+
+.card-number {
+  position: realtive;
+  color: white;
+  text-transform: uppercase;
+  font-family: monospace;
+  font-size: 2.1em;
+  width: 85%;
+  margin-left: 10%;
+  margin-top: 52px;
+}
+
+.card-number p {
+  position: relative;
+  float: left;
+  margin-right: 30px;
+}
+
+
+#card-holder-name {
+  position: absolute;
+  width: 65%;
+  left: 10%;
+  bottom: 12%;
+  color: white;
+  font-family: monospace;
+  font-size: 1.05em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#details {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#details input {
+  width: 70px;
+  float: left;
+  text-align: center;
+  display: inline;
+  margin-right: 10px;
+  padding: 8px 16px;
+}
+
+#details #Hname {
+  width: 418px;
+  margin-top: 18px;
+  padding: 8px 16px;
+}
+
+  </style>
+  <script>
+    angular.module('app', []);
+
+angular.module('app').controller
+  ( 'MainCtrl'
+  , function($scope,$locale) {
+      $scope.currentYear = new Date().getFullYear()
+      $scope.currentMonth = new Date().getMonth() + 1
+      $scope.months = $locale.DATETIME_FORMATS.MONTH
+      $scope.ccinfo = {type:undefined}
+      $scope.save = function(data){
+        if ($scope.paymentForm.$valid){
+          console.log(data) // valid data saving stuff here
+        }
+      }
+    }
+  )
+
+angular.module('app').directive
+  ( 'creditCardType'
+  , function(){
+      var directive =
+        { require: 'ngModel'
+        , link: function(scope, elm, attrs, ctrl){
+            ctrl.$parsers.unshift(function(value){
+              scope.ccinfo.type =
+                (/^5[1-5]/.test(value)) ? "mastercard"
+                : (/^4/.test(value)) ? "visa"
+                : (/^3[47]/.test(value)) ? 'amex'
+                : (/^6011|65|64[4-9]|622(1(2[6-9]|[3-9]\d)|[2-8]\d{2}|9([01]\d|2[0-5]))/.test(value)) ? 'discover'
+                : undefined
+              ctrl.$setValidity('invalid',!!scope.ccinfo.type)
+              return value
+            })
+          }
+        }
+      return directive
+      }
+    )
+
+angular.module('app').directive
+  ( 'cardExpiration'
+  , function(){
+      var directive =
+        { require: 'ngModel'
+        , link: function(scope, elm, attrs, ctrl){
+            scope.$watch('[ccinfo.month,ccinfo.year]',function(value){
+              ctrl.$setValidity('invalid',true)
+              if ( scope.ccinfo.year == scope.currentYear
+                   && scope.ccinfo.month <= scope.currentMonth
+                 ) {
+                ctrl.$setValidity('invalid',false)
+              }
+              return value
+            },true)
+          }
+        }
+      return directive
+      }
+    )
+
+angular.module('app').filter
+  ( 'range'
+  , function() {
+      var filter = 
+        function(arr, lower, upper) {
+          for (var i = lower; i <= upper; i++) arr.push(i)
+          return arr
+        }
+      return filter
+    }
+  )
+  </script>
+  <title>Debit Card</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body>
+  <div id="container" ng-app="">
+    <div id="card">
+      <div id="bank-title"><i><span id="bolder">Credit</span> Card</i></div>
+      <div id="chip"></div>
+      <div class="card-number">
+        <p>{{cardNo1}}</p>
+        <p>{{cardNo2}}</p>
+        <p>{{cardNo3}}</p>
+        <p>{{cardNo4}}</p>
+      </div>
+      
+      <p id="card-holder-name">{{cardHName}}</p>
+      
+    </div>
+    
+    <div id="details">
+      <input type="text" ng-model="cardNo1" placeholder="XXXX">
+      <input type="text" ng-model="cardNo2" placeholder="XXXX">
+      <input type="text" ng-model="cardNo3" placeholder="XXXX">
+      <input type="text" ng-model="cardNo4" placeholder="XXXX">
+      <br><br>
+      <input type="text" id="Hname" ng-model="cardHName" placeholder="Enter Card Holder's Name">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+  	body{
+
+}
+
+h1 {
+  text-align: center;
+}
+
+.div.ng-show {
+  transition: all 0.5s ease-in-out;
+}
+  </style>
+  <script>
+  	var app = angular.module('myApp',[]);
+app.controller('myController', function($scope){
+  $scope.firstName;
+  $scope.lastName;
+  $scope.email
+  $scope.password;
+})
+
+if ($scope.password.length <=8){
+}
+  </script>
+  <body>
+  	<h1>AngularJS Input</h1>
+<div class="container">
+<div class="row">
+<!----------FIRST NAME------------>
+<form name="form">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+<input type="text" class="form-control" id="name" ng-model="firstName">
+    </div>
+    </div>
+<!----------LAST NAME------------>
+    <div class="form-horizontal" role="form">
+<div class="form-group">
+  <label for="lastName">Last Name:</label>
+<input type="text" class="form-control" id="name" ng-model="lastName">
+      </div>
+        </div>
+<!----------EMAIL------------>
+    <div class="form-horizontal" role="form">
+<div class="form-group">
+  <label for="email">Email:</label>
+  <input type="email" class="form-control" id="email" ng-model="email">
+      </div>
+    </div>
+<!------PASSWORD------->
+    <div class="form-horizontal" role="form">
+<div class="form-group">
+  <label for="password">Password:</label>
+<input type="password" class="form-control" id="password" ng-model="password">
+      </div>
+    </div>
+    <!----SUBMIT BUTTON------>
+    <button type="submit" class="btn btn-default" ng-click="content =!content">Submit</button>
+       <br/>
+  <div class="row">
+    <div class="col-sm-6">
+<div ng-show="content">
+      <h2>Hello, {{firstName + " " + lastName}}!</h2>
+      <p class="">A verification email has been sent to {{email}}.<br>Your password is {{password}}, don't forget it!</p>
+</div>
+    </div>
+  </div>
+  </body>
+  </html>
