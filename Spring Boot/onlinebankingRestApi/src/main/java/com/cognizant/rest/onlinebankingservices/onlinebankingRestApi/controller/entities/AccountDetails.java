@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -132,6 +133,15 @@ public class AccountDetails {
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	@Override
+	public String toString() {
+		return "AccountDetails [accountNumber=" + accountNumber + ", firstname=" + firstname + ", lastname=" + lastname
+				+ ", phone=" + phone + ", email=" + email + ", address=" + address + ", username=" + username
+				+ ", password=" + password + ", dateOfBirth=" + dateOfBirth + ", isCard=" + isCard + ", balance="
+				+ balance + ", rewards=" + rewards + ", onlineActive=" + onlineActive + ", fixedDepositList="
+				+ fixedDepositList + ", loanList=" + loanList + ", cards=" + cards + ", transactionList="
+				+ transactionList + "]";
 	}
 	public int getIsCard() {
 		return isCard;
