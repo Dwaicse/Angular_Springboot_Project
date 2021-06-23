@@ -2,6 +2,9 @@ package com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.controller
 
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +21,7 @@ import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.services.Ac
 
 @RestController
 @RequestMapping("/accounts")
-@CrossOrigin("https://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 public class BankController {
 	
 	@Autowired
@@ -57,6 +60,7 @@ public class BankController {
 		return false;
 	}
 	
+	@CrossOrigin(origins="http://localhost:8080/accounts/newAccount")
 	@PostMapping(path = "/newAccount", consumes = "application/json")
 	public AccountDetails createNewAccount(@RequestBody AccountDetails accountDetails1) {
 		return accountDetails.addNewAccount(accountDetails1);

@@ -36,5 +36,8 @@ export class LoginComponent implements OnInit {
       
       
   }
+  goToSignUp(){
+    window.open("http://localhost:4200/signup", "_blank");
+}
 
 }
