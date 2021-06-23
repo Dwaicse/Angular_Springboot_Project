@@ -12,13 +12,12 @@ export class SignupComponent implements OnInit {
   user:User = new User();
   username: string =""
   password:string =""
-  firstName:String=""
-  lastName:string =""
-  account_no:number=0
+  firstname:String=""
+  lastname:string =""
   address:string=""
   email:string=""
-  date_of_birth:string=""
-  mobileNO:string=""
+  dateOfBirth:string=""
+  phone:string=""
 
   constructor(private service:DosignupService) { }
 
@@ -28,13 +27,12 @@ export class SignupComponent implements OnInit {
   performSignUp(){
     this.user.username=this.username;
     this.user.password=this.password;
-    this.user.firstname=this.firstName;
-    this.user.lastName=this.lastName;
-    this.user.account_no=this.account_no;
+    this.user.firstname=this.firstname;
+    this.user.lastname=this.lastname;
     this.user.address=this.address;
     this.user.email=this.email;
-    this.user.date_of_birth=this.date_of_birth;
-    this.user.mobileNo=this.mobileNO;
+    this.user.dateOfBirth=this.dateOfBirth;
+    this.user.phone=this.phone;
     this.service.newAccount(this.user)
     
   }
