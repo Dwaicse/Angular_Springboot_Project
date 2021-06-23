@@ -1,0 +1,5 @@
+package com.cognizant.bank.domain;
+
+public class SavingTransaction {
+
+}
