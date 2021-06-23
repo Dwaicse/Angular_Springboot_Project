@@ -31,40 +31,52 @@ public class AccountDetails {
 	private String rewards;
 	private int onlineActive;
 	
-//	@OneToMany(mappedBy = "account_details", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JsonIgnore
-//	private List<FixedDeposit> fixedDepositList;
-//	
-//	
-//	@OneToMany(mappedBy = "account_details", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JsonIgnore
-//	private List<Loan> loanList;
-//	
-//	
-//	@OneToMany(mappedBy = "account_details", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//	@JsonIgnore
-//	private List<Cards> cardsList;
+	@OneToMany(mappedBy = "accountDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<FixedDeposit> fixedDepositList;
+	
+	
+	@OneToMany(mappedBy = "accountDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Loan> loanList;
+	
+	
+
+	@OneToMany(mappedBy = "accountDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Cards> cards;
+	
+	
+	@OneToMany(mappedBy = "accountDetails", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Transactions> transactionList;
 	
 	
 	
-//	public List<Loan> getLoanList() {
-//		return loanList;
-//	}
-//	public void setLoanList(List<Loan> loanList) {
-//		this.loanList = loanList;
-//	}
-//	public List<Cards> getCardsList() {
-//		return cardsList;
-//	}
-//	public void setCardsList(List<Cards> cardsList) {
-//		this.cardsList = cardsList;
-//	}
-//	public List<FixedDeposit> getFixedDepositList() {
-//		return fixedDepositList;
-//	}
-//	public void setFixedDepositList(List<FixedDeposit> fixedDepositList) {
-//		this.fixedDepositList = fixedDepositList;
-//	}
+	public List<Transactions> getTransactionList() {
+		return transactionList;
+	}
+	public void setTransactionList(List<Transactions> transactionList) {
+		this.transactionList = transactionList;
+	}
+	public List<Loan> getLoanList() {
+		return loanList;
+	}
+	public void setLoanList(List<Loan> loanList) {
+		this.loanList = loanList;
+	}
+	public List<Cards> getCardsList() {
+		return cards;
+	}
+	public void setCardsList(List<Cards> cardsList) {
+		this.cards = cardsList;
+	}
+	public List<FixedDeposit> getFixedDepositList() {
+		return fixedDepositList;
+	}
+	public void setFixedDepositList(List<FixedDeposit> fixedDepositList) {
+		this.fixedDepositList = fixedDepositList;
+	}
 
 
 	public String getAccountNumber() {

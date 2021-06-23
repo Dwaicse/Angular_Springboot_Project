@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.Dao.AccountDao;
+
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.controller.entities.AccountDetails;
+
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.services.AccountDetailsService;
 
 @Service
@@ -64,6 +66,7 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 		
 	}
 
+	
 
 
 
@@ -129,6 +132,8 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 	}
 
 
+	
+	
 
 
 
@@ -143,5 +148,39 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 		     }
 		return false;
 	}
+
+
+
+
+
+
+
+	@Override
+	public boolean checkAccountNumberExist(String accountNumber) {
+		
+		AccountDetails accountDetails = accountDao.findById(accountNumber).orElse(null);
+		if(accountDetails != null)
+		{
+			return true;
+		}
+		return false;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
