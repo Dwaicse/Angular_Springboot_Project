@@ -1,11 +1,10 @@
-
-
 <h1>Login Here</h1>
 <div class="container">
     <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
     Username <input type="text" name="username" [(ngModel)]="username"><br>
     Password <input type="password" name="password" [(ngModel)]="password"><br>
    <button (click)="logIn()">Login</button><br>
-   <br>{{message}}
+   <br>
+   Create Account <a routerLink="http:localhost:4200/singup">here</a>
    
 </div>

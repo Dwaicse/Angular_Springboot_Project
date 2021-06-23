@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationServiceService } from '../authentication-service.service';
-
+import { LoginserviceService } from '../loginservice.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -9,35 +9,32 @@ import { AuthenticationServiceService } from '../authentication-service.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  user:any
-  errorMessage="Invalid Credentials"
+  invalidLogin:boolean=false
   username=""
   password=""
-  invalidLogin:boolean=false;
-  message=""
-  constructor(private authService:AuthenticationServiceService,private router: Router) { }
+  // message="login failure"
+  errorMessage="Invalid Credentials"
+  validUser:any
+  constructor(private service:LoginserviceService,private router:Router) { }
 
   ngOnInit(): void {
   }
 
   logIn(){
-    this.authService.verifyUser().subscribe(data=>{
-      this.user=data;
-    })
-      if(!(this.user.username===this.username && this.user.password===this.password))  {
-        this.invalidLogin=true;
-        this.message=""
-
-      }
-      else{
-        this.message="successful login!!!"
-        this.invalidLogin=false
-        //from here the page should be redirected to dashboard location
-        this.router.navigate(['dashboard'])
-
-      }
-    
+      this.service.performLogin(this.username,this.password).subscribe(data=>{
+        if(data){
+          // this.message="login success!!"
+          this.invalidLogin=false
+          this.router.navigate(['dashboard'])
+        }
+        else{
+              // this.message="login failure"
+              this.invalidLogin=true
+        }
+      })
+     
+      
+      
   }
 
 }
