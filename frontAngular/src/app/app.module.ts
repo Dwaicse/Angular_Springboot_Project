@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ConstantComponent } from './constant/constant.component';
+import { ErrorComponent } from './error/error.component';
+import { AmountComponent } from './amount/amount.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ConstantComponent } from './constant/constant.component';
     DashboardComponent,
     LoginComponent,
     SignupComponent,
-    ConstantComponent
+    ConstantComponent,
+    ErrorComponent,
+    AmountComponent
   ],
   imports: [
     BrowserModule,
