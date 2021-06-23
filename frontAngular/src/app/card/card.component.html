@@ -1,0 +1,25 @@
+<p>card works!</p>
+<div id="container" ng-app="">
+    <div id="card">
+      <div id="bank-title"><i><span id="bolder">Credit</span> Card</i></div>
+      <div id="chip"></div>
+      <div class="card-number">
+        <p>{{cardNo1}}</p>
+        <p>{{cardNo2}}</p>
+        <p>{{cardNo3}}</p>
+        <p>{{cardNo4}}</p>
+      </div>
+      
+      <p id="card-holder-name">{{holdername}}</p>
+      
+    </div>
+    
+    <div id="details">
+      <input type="text"  placeholder="XXXX" name="cardNo1" [(ngModel)]="cardNo1">
+      <input type="text"  placeholder="XXXX" name="cardNo2" [(ngModel)]="cardNo2">
+      <input type="text"  placeholder="XXXX" name="cardNo3" [(ngModel)]="cardNo3">
+      <input type="text"  placeholder="XXXX" name="cardNo4" [(ngModel)]="cardNo4">
+      <br><br>
+      <input type="text" id="Hname" name="holdername" placeholder="Enter Card Holder's Name" [(ngModel)]="holdername">
+    </div>
+  </div>

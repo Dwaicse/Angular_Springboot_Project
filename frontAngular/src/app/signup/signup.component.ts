@@ -18,7 +18,8 @@ export class SignupComponent implements OnInit {
   email:string=""
   dateOfBirth:string=""
   phone:string=""
-
+  invalidLogin=true
+  errorMessage="Invalid Credentials"
   constructor(private service:DosignupService) { }
 
   ngOnInit(): void {

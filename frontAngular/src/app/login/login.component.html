@@ -16,7 +16,7 @@
     </head>
     <body class="bg-gradient-primary">
         <div class="container">
-
+            
             <!-- Outer Row -->
             <div class="row justify-content-center">
     
@@ -53,7 +53,9 @@
                                                 Login
                                             </button>
                                             <hr>
-                                            
+                                            <div class="container">
+                                                <div class="alert alert-warning" *ngIf="invalidLogin">{{errorMessage}}</div>
+                                            </div>
                                 
                                         </form>
                                         <hr>

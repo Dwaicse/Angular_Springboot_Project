@@ -1,7 +1,14 @@
 <!-- <p>signup works!</p> -->
 
-<h1>Please Fill Up Your Details Here</h1>
-<div class="container">
+<h2 style="text-align: center;">Please Fill Up Your Details Here</h2>
+<br>
+
+    <div class="container">
+        <div class="alert alert-warning" *ngIf ='invalidLogin'>{{errorMessage}}</div>
+        <div>
+
+
+<!-- <div class="container-fluid">
 First Name <input type="text" name="firstname" [(ngModel)]="firstname"><br>
 Last Name <input type="text" name="lastname" [(ngModel)]="lastname"><br>
 DOB <input type="date" name="dateOfBirth" [(ngModel)]="dateOfBirth"><br>
@@ -11,4 +18,53 @@ Username <input type="text" name="username" [(ngModel)]="username"><br>
 Password <input type="password" name="password" [(ngModel)]="password"><br>
 Phone <input type="text" name="phone" [(ngModel)]="phone"><BR>
 <button (click)="performSignUp()">Create Account</button>
-</div>
+</div> -->
+
+<form class="container">
+    <div class="form-group" style="text-align: center;" >
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" name="firstname"  placeholder="Enter first name" [(ngModel)]="firstname">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="lastname">Password</label>
+      <input type="text" class="form-control" name="lastname" placeholder="Enter last name" [(ngModel)]="lastname">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="date">DOB</label>
+      <input type="date" class="form-control" name="date" placeholder="date" [(ngModel)]="dateOfBirth">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="text">Address</label>
+      <input type="text" class="form-control" name="address" placeholder="Address" [(ngModel)]="address">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="exampleInputPassword1">Phone Number</label>
+      <input type="number" class="form-control" name="phonenumber" placeholder="Phone Number" [(ngModel)]="phone">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" name="email"  placeholder="Enter email" [(ngModel)]="email">
+    </div>
+    <div class="form-group" style="text-align: center;">
+      <label for="Password1">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="performSignUp()">Submit</button>
+  </form>
+
+<!-- <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">First Name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username" name="firstname">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" >Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form> -->

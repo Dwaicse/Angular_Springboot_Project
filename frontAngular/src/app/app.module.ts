@@ -11,6 +11,7 @@ import { SignupComponent } from './signup/signup.component';
 import { ConstantComponent } from './constant/constant.component';
 import { ErrorComponent } from './error/error.component';
 import { AmountComponent } from './amount/amount.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { AmountComponent } from './amount/amount.component';
     ConstantComponent,
     ErrorComponent,
     AmountComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
