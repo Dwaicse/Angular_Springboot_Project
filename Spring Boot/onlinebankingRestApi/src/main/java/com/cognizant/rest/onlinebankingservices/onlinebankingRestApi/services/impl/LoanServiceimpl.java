@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.Dao.CardsDao;
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.Dao.LoanDao;
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.controller.entities.AccountDetails;
 
@@ -19,7 +20,8 @@ public class LoanServiceimpl implements LoanService {
 	@Autowired
 	private AccountDetailsService accountDetailsService;
 	
-
+    @Autowired
+    private CardsDao cardsDao;
 	
 	@Override
 	public List<Loan> LoansByAccountNumber(String accountNumber) {
@@ -27,5 +29,10 @@ public class LoanServiceimpl implements LoanService {
 		List<Loan> loanList = aDetails.getLoanList();
 		return loanList;
 	}
+	
+	
+	
+	
+	
 
 }

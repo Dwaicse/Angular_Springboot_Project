@@ -1,5 +1,6 @@
 package com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.services.impl;
 
+import java.lang.module.FindException;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.Dao.AccountDao;
 
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.controller.entities.AccountDetails;
-
+import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.controller.entities.Cards;
 import com.cognizant.rest.onlinebankingservices.onlinebankingRestApi.services.AccountDetailsService;
 
 @Service
@@ -51,7 +52,12 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 		return accountDetails;
 	}
 	
-	
+	@Override
+	public AccountDetails findByUserName(String userName) {
+		return  accountDao.findByUsername(userName);
+		
+	}
+
 	
 
 
@@ -67,6 +73,13 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 	}
 
 	
+    @Override
+    public List<Cards> findCardsByAccountNumber(String accountNumber)
+    {
+    	AccountDetails acdAccountDetails = this.findByAccountNumber(accountNumber);
+    	List<Cards> cards = acdAccountDetails.getCardsList();
+    	return cards;
+    }
 
 
 
@@ -114,6 +127,8 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 	 
 		return false;
 	}
+	
+	
 
 
 
@@ -166,6 +181,27 @@ public class AccountDetailsServiceimpl implements AccountDetailsService {
 		return false;
 
 	}
+
+
+
+
+
+
+
+	@Override
+	public String findCardNumber(String userName) {
+		AccountDetails accountDetails = this.findByUserName(userName);
+		List<Cards> cards = accountDetails.getCardsList();
+	    String cardNoString = cards.get(0).getCardNumber();
+		
+		return cardNoString;
+	}
+
+
+
+
+
+
 
 
 

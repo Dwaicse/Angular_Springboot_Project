@@ -25,6 +25,9 @@ public class BankController {
 	@Autowired
 	private AccountDetailsService accountDetails;
 	
+	@Autowired
+	private AccountDao accountDao;
+	
 	
 	@GetMapping("/home")
 	public String home() {
@@ -48,6 +51,38 @@ public class BankController {
 		
 	}
 	
+	@GetMapping("/acNumber/{userName}")
+	public String getAccountNumberByUserName(@PathVariable("userName") String userName) {
+		AccountDetails accountDetails = accountDao.findByUsername(userName);
+		accountDetails.setLoanList(null);
+		accountDetails.setCardsList(null);
+		accountDetails.setFixedDepositList(null);
+		accountDetails.setTransactionList(null);
+		return accountDetails.getAccountNumber();
+	}
+	
+	@GetMapping("/ad/{userName}")
+	public AccountDetails getAccountDetailsByUserName(@PathVariable("userName") String userName) {
+		AccountDetails accountDetails = accountDao.findByUsername(userName);
+		accountDetails.setLoanList(null);
+		accountDetails.setCardsList(null);
+		accountDetails.setFixedDepositList(null);
+		accountDetails.setTransactionList(null);
+		return accountDetails;
+	}
+	
+	@GetMapping("/balance/{userName}")
+	public String getBalanceByUserName(@PathVariable("userName") String userName) {
+		AccountDetails accountDetails = accountDao.findByUsername(userName);
+		accountDetails.setLoanList(null);
+		accountDetails.setCardsList(null);
+		accountDetails.setFixedDepositList(null);
+		accountDetails.setTransactionList(null);
+		return accountDetails.getBalance();
+	}
+	
+	
+	
 	@GetMapping("/login/{username}/{password}")
 	public boolean performLogin(@PathVariable("username") String username, @PathVariable("password") String password)
 	{
@@ -60,8 +95,7 @@ public class BankController {
 	
 	@PostMapping(path = "/newAccount", consumes = "application/json")
 	public AccountDetails createNewAccount(@RequestBody AccountDetails accountDetails1) {
-
-		return accountDetails.addNewAccount(accountDetails1);
+        return accountDetails.addNewAccount(accountDetails1);
 		
 		
 	}

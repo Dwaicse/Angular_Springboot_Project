@@ -68,11 +68,19 @@ public class BankUtilityController {
 		
 	}
 
-	@GetMapping("/cards/{ac}")
-	public List<Cards> getcardsList(@PathVariable("ac") String accountNumber)
+	@GetMapping("/cards/{accountNumber}")
+	public List<Cards> getcardsList(@PathVariable("accountNumber") String accountNumber)
 	{
-		return cardsService.CardsByAccountNumber(accountNumber);
+		return accountDetailsService.findCardsByAccountNumber(accountNumber);
 	}
+	
+	@GetMapping("/api/card/{userName}")
+	public String getCardNumberbyuserName(@PathVariable("userName") String userName) {
+		return cardsService.findCardNumber(userName);
+		
+	}
+	
+	
 	
 	@GetMapping("/loans/{ac}")
 	public List<Loan> getLoanList(@PathVariable("ac") String accountNumber)
