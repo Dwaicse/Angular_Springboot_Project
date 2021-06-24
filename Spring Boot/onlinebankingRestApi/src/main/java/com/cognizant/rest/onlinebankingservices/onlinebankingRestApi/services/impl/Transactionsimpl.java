@@ -30,6 +30,10 @@ public class Transactionsimpl implements TransactionService {
 		
 		AccountDetails aDetails = accountDetailsService.findByAccountNumber(accountNumber);
 		List<Transactions> transactionsList = aDetails.getTransactionList();
+		for(Transactions transactions : transactionsList)
+		{
+			transactions.setAccountDetails(null);
+		}
 		
 		return transactionsList;
 	}
@@ -83,7 +87,7 @@ public class Transactionsimpl implements TransactionService {
      transactionsreceiver.setTypeOftransaction("Credited");
      transactionsreceiver.setTransactiondetails("Credited Successfully to"+updatepayeedetails.getFirstname()+ " "+ updatepayeedetails.getLastname());
      transactionssender.setAccountDetails(updatepayeedetails);
-     this.saveWithdrawTransaction(transactionssender);
+     this.saveWithdrawTransaction(transactionsreceiver);
      
      
       return "Transaction Succesful!";  
