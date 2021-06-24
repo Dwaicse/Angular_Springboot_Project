@@ -29,7 +29,7 @@ public class BankController {
 	@GetMapping("/home")
 	public String home() {
 		
-		return "this is home page";
+		return "Praballlllllll";
 	}
 
 	//get the accounts
