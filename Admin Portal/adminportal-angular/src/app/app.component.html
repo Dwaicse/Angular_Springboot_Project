@@ -1,0 +1,30 @@
+<!-- <p>user-homepage works!</p> -->
+<div *ngIf="authenticationService.isAuthenticated">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+      <a class="navbar-brand" routerLink="/user-account" style="font-size: 20px; font-weight: bold;">Online Banking</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav mr-auto">
+  
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/user-account"><div style="font-size: 15px; font-weight: bold; color: white;">User Account Info</div></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"routerLink="/checkbook-requests" ><div style="font-size: 15px; font-weight: bold; color: white;">ChequeBook Requests</div></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"routerLink="/authorize" ><div style="font-size: 15px; font-weight: bold; color: white;">Authorization(KYC)</div></a>
+          </li>
+          <li class="nav-item">
+          <a class="nav-link" (click)="logout()"><div style="font-size: 15px; font-weight: bold; color: white;">Log Out</div></a>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <router-outlet></router-outlet>
+ 

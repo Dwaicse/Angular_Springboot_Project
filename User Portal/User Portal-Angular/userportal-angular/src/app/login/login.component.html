@@ -1,0 +1,44 @@
+<div class="row" style="position: relative;">
+    <div class="col=lg-2 col-md-2"></div>
+    <div class="col=lg-7 col-md-7">
+<div class="container">
+    <div style="border: 7px solid #4E73DF; border-style: double; padding: 20px; width: 150%;">
+<form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+
+    <br>
+    <h3 style="text-align: center; color: #4E73DF;font-weight: bold;">Online Banking</h3>
+    <h3 style="text-align: center; color: #4E73DF; font-weight: bold;">User Portal</h3>
+    <br>
+    <br>
+    <div class="form-group">
+        <label for="username"><div style="color: #4E73DF; font-weight: bold; font-size: 20px;">Username</div></label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.username.errors }" placeholder="Enter Username"/>
+        <div *ngIf="submitted && fval.username.errors" class="invalid-feedback">
+            <div *ngIf="fval.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="password"><div style="color: #4E73DF; font-weight: bold; font-size: 20px;">Password</div></label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && fval.password.errors }" placeholder="Enter password here" />
+        <div *ngIf="submitted && fval.password.errors" class="invalid-feedback">
+            <div *ngIf="fval.password.errors.required">Please enter a Password</div>
+        </div>
+    </div>
+    <br>
+    
+
+    <div class="form-group" style="text-align:center;">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        <a routerLink="/register" class="btn btn-link">Register</a>
+    </div>
+    <br>
+</form>
+</div>
+</div>
+</div>
+<div class="col-lg-3 col-md-3"></div>
+</div>

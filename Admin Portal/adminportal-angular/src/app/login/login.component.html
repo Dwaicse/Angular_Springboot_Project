@@ -1,0 +1,35 @@
+
+<html>
+  <head></head>
+  <body>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-lg-4 col-md-4"></div>
+  <div class="col-lg-4 col-md-4" style="border:5px solid #4E73DF; border-style: double; padding: 20px;">
+
+<h1 style="text-align: center; color:#4E73DF;">Admin Portal</h1>
+<form class="form-login" (ngSubmit)="onSubmit(loginForm)"  #loginForm="ngForm" >
+    
+    <label for="inputUserName" class="sr-only">UserName</label>
+    <input type="text" id="inputUserName" name="inputUserName" class="form-control"  [ngClass]="{ 'is-invalid': submitted && inputUserName.errors }" ngModel placeholder="UserName" required autofocus #inputUserName= ngModel>
+    <div *ngIf="submitted && inputUserName.errors" class="invalid-feedback">
+      <span *ngIf="inputUserName.errors.required">Please enter a UserName</span>
+    </div>
+    
+    
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" name="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && password.errors }" ngModel placeholder="Password" required #password=ngModel>
+    <div *ngIf="submitted && password.errors" class="invalid-feedback">
+      <span *ngIf="password.errors.required">Please enter a Password</span>
+    </div>
+    <br>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+
+</div>
+<div class="col-lg-4 col-md-4"></div>
+</div>
+</body>
+</html>

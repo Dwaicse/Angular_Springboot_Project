@@ -1,0 +1,78 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<nav class="navbar navbar-expand-sm  navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/home" style="font-size: 30px; font-weight: bold;">Online Banking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transactionHistory"><div style="font-size: 15px; font-weight: bold; color: white;">Transaction History</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transferHistory"><div style="font-size: 15px; font-weight: bold; color: white;">Transfer History</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transfer"><div style="font-size: 15px; font-weight: bold; color: white;">Transfer Money</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/chequebookRequest"><div style="font-size: 15px; font-weight: bold; color: white;">Request Checkbook</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div style="font-size: 15px; font-weight: bold; color: white;">User Session</div></a>
+        <div class="dropdown-menu"  aria-labelledby="dropdown04">
+          <a class="dropdown-item" routerLink="/editProfile" ><div style="font-size: 15px; font-weight: bold; color: black;">Change Profile Settings</div></a>
+          <a class="dropdown-item" routerLink="/login"><div style="font-size: 15px; font-weight: bold; color: black;">Logout</div></a>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<br>
+<div class="row">
+  <div class="col-lg-3 col-md-3"></div>
+  <div class="col-lg-6 col-md-6">
+<div style="border: 7px solid #4E73DF; border-style: double; padding: 20px; width: 100%;">
+<h4 style="text-align: center; color: #4E73DF;">Transaction History</h4>
+<br>
+
+  <h5 style="padding-left: 1rem; text-align: center; color: #4E73DF;">Type of account: <b><i>Saving</i></b> </h5><br>
+  <h5 style="padding-left: 1rem; text-align: center; color: #4E73DF;">Saving balance :<b><i> {{savingBalance}}</i></b> </h5><br>
+  <h5 style="padding-left: 1rem; text-align: center; color: #4E73DF;">Account number :<b><i>{{accNo}}</i></b> </h5><br>
+</div>
+</div>
+<div class="col-lg-3 col-md-3">
+</div>
+</div>
+<br>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr style="font-weight: bold;">
+      <th style="text-align: center;">Date</th>
+      <th style="text-align: center;">Transaction Id</th>
+      <th style="text-align: center;">Action Type</th>
+      <th style="text-align: center;">Amount </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let transaction of transactionList" style="font-weight: bold;">
+      <td  style="text-align: center;">{{transaction.date}}</td>
+      <td  style="text-align: center;">{{transaction.id}}</td>
+      <td  style="text-align: center;">{{transaction.action}}</td>
+      <td  style="text-align: center;">{{transaction.amount}}</td>
+     
+    </tr>
+
+      
+  </tbody>
+</table>

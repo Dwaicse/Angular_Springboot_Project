@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-sm  navbar-dark bg-primary">
+  <a class="navbar-brand" routerLink="/home" style="font-size: 30px; font-weight: bold;" >Online Banking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExample04">
+    <ul class="navbar-nav mr-auto">
+      
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transactionHistory"><div style="font-size: 15px; font-weight: bold; color: white;">Transaction History</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transferHistory"><div style="font-size: 15px; font-weight: bold; color: white;">Transfer History</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/transfer"><div style="font-size: 15px; font-weight: bold; color: white;">Transfer Money</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/chequebookRequest"><div style="font-size: 15px; font-weight: bold; color: white;">Request Checkbook</div><span class="sr-only"></span></a>
+      </li>
+
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><div style="font-size: 15px; font-weight: bold; color: white;">User Session</div></a>
+        <div class="dropdown-menu"  aria-labelledby="dropdown04">
+          <a class="dropdown-item" routerLink="/editProfile" ><div style="font-size: 15px; font-weight: bold; color: black;">Change Profile Settings</div></a>
+          <a class="dropdown-item" routerLink="/login"><div style="font-size: 15px; font-weight: bold; color: black;">Logout</div></a>
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-3 col-md-3">
+  </div>
+  <div class="col-lg-6 col-md-6">
+<div style="border: 7px solid #4E73DF; border-style: double; padding: 20px;">
+    <div style="font-weight: bold; text-align: center; color: #4E73DF;">
+    
+      <h2 style="text-align: center; ">Request Cheque Book</h2>
+      <br>
+      <div class="form-group">
+        <div style="text-align: center; font-size:20px;" class="form-group">
+          <label>Account Number :&nbsp;</label> <label>{{requestingAccNo}}</label>
+         </div>
+      </div>
+         <br>
+        <div class="form-group" style="text-align: center; font-size:20px;" >
+          <label>ChequeBook Pages</label>
+          <br>
+          <br>
+          <select class="form-control" (change) = "filterSelected($event.target.value)" >
+            <option *ngFor="let p of pages" [value]='p.value'>
+              {{p.name}}
+            </option>
+          </select>
+          <br>
+          <br>
+          <button (click) = "setOption()" class="btn btn-info form-control"><span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>Request Chequebook</button>
+              <br>
+        </div>
+</div>
+</div>
+  </div>
+  <div class="col-lg-3 col-md-3"></div>
+  </div>
